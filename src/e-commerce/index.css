@@ -1,0 +1,97 @@
+.login-inputs{
+        color: #3f12f0;
+        width: 220px;
+        height: 30px;
+        background: #e0dada;
+        
+    }
+    .email-label{
+      text-align: right;
+    }
+    .maindiv{
+        width: 400px;
+        height: 200px;
+        font-size: small;
+        margin-left: 280px;
+        text-align: left;
+    }
+    .login-btn {
+        background-color: #04AA6D;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+      }
+      button:hover {
+        opacity: 0.8;
+      }
+      input[type=text], input[type=password] {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+        text-align: center;
+      }
+.products{
+  margin-left: 30px;
+  font-size: larger;
+  margin-right: 40px;
+  color: white;
+}
+.navlink{
+  background-color: rgb(53, 157, 142);
+  height: 45px;
+  width: 900px;
+}
+h2{
+  text-align: center;
+}
+img{
+  width: 200px;
+  height: 200px;
+}
+.nav-maindiv{
+  display: flex;
+  flex-direction: row;
+  flex-flow: row wrap;
+  
+  margin-top: 50px;
+  width: "100%";
+  color: white;
+}
+.marginView{
+  margin: 11px;
+  background-color: rgb(53, 157, 142);
+  border-radius: 10px;
+  flex: 0.24;
+}
+p{
+  font-size: small;
+  margin-left:  3px;
+}
+h5{
+  margin-left:  3px;
+}
+.title{
+  text-align: center;
+}
+.add-btn-cart{
+    background-color: #112899;
+    border-radius: 5px;
+    width: 80px;
+    height: 20px;
+    margin-left: 55px;
+    color: white;
+    margin-bottom: 5px;
+}
+.userImg{
+  width: 35px;
+  height: 35px;
+}
+span{
+  color: red;
+}
