@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import Navbar from './navbar'
   import 'react-toastify/dist/ReactToastify.css';
-
+  import FillButton from '../components/buttons/fillButton'
+  import CartItems from '../components/cartitems/cartItem'
 toast.configure()
 function Clothes() {
   const [clothes, setfClothes] = useState([]);
@@ -48,22 +49,18 @@ function Clothes() {
           <div className="nav-maindiv">
             {clothes.map((item) => (
               <div className="marginView" key={item.id}>
-                <p className="title">{item.title}</p>
-                <img src={item.thumbnail}></img>
-                <h5>price : ₹{item.price}</h5>
-                <p>DiscountPercentage : {item.discountPercentage}%</p>
-                {selectedItem === item.id ? (
-                  <p>{item.description}</p>
-                ) : (
-                  <p>Description : {item.description.substring(0, 35)}...</p>
-                )}
-                <button
-                  className="add-btn-cart"
-                  type="submit"
-                  onClick={() => addToCart(item)}
-                >
-                  add cart
-                </button>
+                <CartItems 
+                title={item.title}
+                thumbnail={item.thumbnail}
+                price={item.price}
+                DiscountPercentage={item.discountPercentage}
+                Description={item.description}
+                />
+                 <FillButton
+          type='submit'
+          handleClick={()=>addToCart(item)}
+          name="Add To Cart"
+          customStyle ='add-cart-btn'/>
               </div>
             ))}
           </div>

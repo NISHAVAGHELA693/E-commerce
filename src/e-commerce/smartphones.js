@@ -3,6 +3,8 @@ import React, { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Navbar from "./navbar";
+import FillButton from '../components/buttons/fillButton'
+import CartItems from '../components/cartitems/cartItem'
 toast.configure();
 function Smartphones() {
   const username = JSON.parse(localStorage.getItem("username"));
@@ -49,22 +51,18 @@ function Smartphones() {
           <div className="nav-maindiv">
             {electricItem.map((item) => (
               <div className="marginView" key={item.id}>
-                <p className="title">{item.title}</p>
-                <img src={item.thumbnail}></img>
-                <h5>price : ₹{item.price}</h5>
-                <p>DiscountPercentage : {item.discountPercentage}%</p>
-                {selectedItem === item.id ? (
-                  <p>{item.description}</p>
-                ) : (
-                  <p>Description : {item.description.substring(0, 40)}...</p>
-                )}
-                <button
-                  className="add-btn-cart"
-                  type="submit"
-                  onClick={() => addToCart(item)}
-                >
-                  add cart
-                </button>
+                <CartItems 
+                title={item.title}
+                thumbnail={item.thumbnail}
+                price={item.price}
+                DiscountPercentage={item.discountPercentage}
+                Description={item.description}
+                />
+                 <FillButton
+          type='submit'
+          handleClick={()=>addToCart(item)}
+          name="Add To Cart"
+          customStyle ='add-cart-btn'/>
               </div>
             ))}
           </div>

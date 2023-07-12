@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "../e-commerce/index.css";
 import { useNavigate } from "react-router-dom";
-
+import InputField  from "../components/inputField";
+import FillButton from "../components/buttons/fillButton";
 const Login = () => {
   const navigate = useNavigate();
   const [loginError, setLoginError] = useState(false);
@@ -74,46 +75,35 @@ const Login = () => {
     <div>
       <h2>Login</h2>
       <form onSubmit={() => onclickHandle()}>
-        <div className="maindiv">
-          <label>Username</label>
-          <br />
-          <input
-            type="text"
-            name="username"
-            id="username"
-            value={formValues.username}
-            onChange={handleChange}
-            className={formErrors.username && "input-error"}
-          />
-          {formErrors.username && (
-            <span className="error">{formErrors.username}</span>
-          )}
+        <div >
+<InputField
+type={"text"}
+name={"username"}
+id={"username"}
+value={formValues.username}
+handleChange={handleChange}
+headeing={"username"}
+/>
+  
+  <br/>
+  <br/>
 
-          <br />
-          <br />
-          <label>Password</label>
-          <br />
-          <input
-            type="password"
-            name="password"
-            id="password"
-            value={formValues.password}
-            onChange={handleChange}
-            className={formErrors.password && "input-error"}
-          />
-          {formErrors.password && (
-            <span className="error">{formErrors.password}</span>
-          )}
-          <br />
-          <br />
+  <InputField
 
-          <button
-            type="submit"
-            className="login-btn"
-            onClick={(event) => onclickHandle(event)}
-          >
-            LOGIN
-          </button>
+type="password"
+name={"password"}
+id={"password"}
+value={formValues.password}
+handleChange={handleChange}
+headeing={"pasword"}
+
+/>
+          <br />
+          <br />
+          <FillButton
+          type='submit'
+          handleClick={onclickHandle}
+          name="LOGIN"/>
         </div>
       </form>
     </div>
