@@ -19,4 +19,11 @@
     margin-left: 55px;
     color: white;
     margin-bottom: 5px;
+    margin-top: 51px;
   }
+.logout{
+  margin-left: 830px;
+  border: none;
+  cursor: pointer;
+  color: rgb(224, 12, 8);
+}

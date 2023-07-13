@@ -53,7 +53,6 @@ const Login = () => {
         console.log("fhhh", response.id);
         if (response.id) {
           localStorage.setItem("username", JSON.stringify(item));
-
           alert("Login successful");
           navigate("/smartphones");
         } else {

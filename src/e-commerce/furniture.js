@@ -2,14 +2,13 @@ import { Link } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Navbar from "./navbar";
+import Navbar from "../components/header/navbar";
 import CartItems from '../components/cartitems/cartItem'
 import FillButton from '../components/buttons/fillButton'
 toast.configure();
 function Furniture() {
   const username = JSON.parse(localStorage.getItem("username"));
   const [furniture, setfFurniture] = useState([]);
-  const [selectedItem, setSelectedItem] = useState(null);
   const fetchUserData = () => {
     fetch("https://dummyjson.com/products/category/furniture")
       .then((response) => {
@@ -49,7 +48,7 @@ function Furniture() {
         {furniture.length > 0 && (
           <div className="nav-maindiv">
             {furniture.map((item) => (
-              <div className="marginView" key={item.id}>
+              <div key={item.id}>
                <CartItems 
                 title={item.title}
                 thumbnail={item.thumbnail}

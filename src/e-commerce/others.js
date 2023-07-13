@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
 import React, { useEffect, useState } from "react";
-function Others(){
-    const [others, setOthers] = useState([]);
+function Others() {
+  
+  const [others, setOthers] = useState([]);
   const fetchUserData = () => {
     fetch("https://dummyjson.com/products/category/categories")
       .then((response) => {
@@ -19,9 +20,9 @@ function Others(){
   useEffect(() => {
     fetchUserData();
   }, []);
-    return(
-        <div>
-            <div className="navlink">
+  return (
+    <div>
+      <div className="navlink">
         <Link className="products" to="/smartphones">
           smartphons
         </Link>
@@ -40,8 +41,8 @@ function Others(){
           allproducts
         </Link>
         <Link className="products" to="/addcart">
-            addcart
-          </Link>
+          addcart
+        </Link>
       </div>
       <h2>All products</h2>
       <div>
@@ -58,4 +59,4 @@ function Others(){
     </div>
   );
 }
-    export default Others;
+export default Others;

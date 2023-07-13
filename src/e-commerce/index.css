@@ -54,15 +54,6 @@ img{
   width: 200px;
   height: 200px;
 }
-.nav-maindiv{
-  display: flex;
-  flex-direction: row;
-  flex-flow: row wrap;
-  
-  margin-top: 50px;
-  width: "100%";
-  color: white;
-}
 .marginView{
   margin: 11px;
   background-color: rgb(53, 157, 142);

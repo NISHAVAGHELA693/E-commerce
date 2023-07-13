@@ -2,14 +2,13 @@ import { Link } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Navbar from "./navbar";
+import Navbar from "../components/header/navbar";
 import CartItems from '../components/cartitems/cartItem'
 import FillButton from '../components/buttons/fillButton'
 toast.configure();
 function Groceries() {
   const username = JSON.parse(localStorage.getItem("username"));
   const [groceries, setGroceries] = useState([]);
-  const [selectedItem, setSelectedItem] = useState(null);
   useEffect(() => {
     fetchUserData();
   }, []);
@@ -48,7 +47,7 @@ function Groceries() {
         {groceries.length > 0 && (
           <div className="nav-maindiv">
             {groceries.map((item) => (
-              <div className="marginView" key={item.id}>
+              <div key={item.id}>
                 <CartItems 
                 title={item.title}
                 thumbnail={item.thumbnail}

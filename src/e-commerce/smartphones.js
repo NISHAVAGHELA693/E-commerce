@@ -2,15 +2,15 @@ import { Link } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Navbar from "./navbar";
-import FillButton from '../components/buttons/fillButton'
-import CartItems from '../components/cartitems/cartItem'
+import Navbar from "../components/header/navbar";
+import FillButton from "../components/buttons/fillButton";
+import CartItems from "../components/cartitems/cartItem";
+import "../components/cartitems/style.css";
 toast.configure();
 function Smartphones() {
   const username = JSON.parse(localStorage.getItem("username"));
 
   const [electricItem, setelectricItem] = useState([]);
-  const [selectedItem, setSelectedItem] = useState(null);
   const fetchUserData = () => {
     fetch("https://dummyjson.com/products/category/smartphones")
       .then((response) => {
@@ -50,19 +50,21 @@ function Smartphones() {
         {electricItem.length > 0 && (
           <div className="nav-maindiv">
             {electricItem.map((item) => (
-              <div className="marginView" key={item.id}>
-                <CartItems 
-                title={item.title}
-                thumbnail={item.thumbnail}
-                price={item.price}
-                DiscountPercentage={item.discountPercentage}
-                Description={item.description}
+              <div key={item.id}>
+                <CartItems
+                  title={item.title}
+                  thumbnail={item.thumbnail}
+                  price={item.price}
+                  DiscountPercentage={item.discountPercentage}
+                  Description={item.description}
+                  customStyle="cart-style"
                 />
-                 <FillButton
-          type='submit'
-          handleClick={()=>addToCart(item)}
-          name="Add To Cart"
-          customStyle ='add-cart-btn'/>
+                <FillButton
+                  type="submit"
+                  handleClick={() => addToCart(item)}
+                  name="Add To Cart"
+                  customStyle="add-cart-btn"
+                />
               </div>
             ))}
           </div>
