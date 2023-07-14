@@ -12,3 +12,8 @@ input[type=text], input[type=password] {
     border: 1px solid #ccc;
     box-sizing: border-box;
   }
+  .error{
+    margin-left: 280px;
+    margin-top: 19px;
+    color: red;
+  }

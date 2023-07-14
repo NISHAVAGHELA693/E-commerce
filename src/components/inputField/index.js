@@ -1,6 +1,7 @@
 import "../inputField/styles.css";
 const InputField = (props) => {
-   const {type,name,id,value,handleChange,formErrors,headeing}=props
+   const {type,name,id,value,handleChange,formErrors={},headeing}=props
+  //  console.log('hgj....',formErrors)
   return (
     <div className="maindiv">
 
@@ -15,9 +16,11 @@ const InputField = (props) => {
         onChange={handleChange}
     
       />
-      {formErrors && (
-        <span className="error">{formErrors}</span>
-      )}
+
+       
+       {/* {formErrors?.username ? <span className="error">{formErrors.username}</span>
+       : <span className="error">{formErrors.password}</span>}
+        */}
     </div>
   );
 };

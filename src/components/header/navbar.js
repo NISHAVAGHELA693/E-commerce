@@ -31,6 +31,7 @@ function Navbar({ children, username }) {
           allproducts
         </Link>
         <Link className="products" to="/addcart">
+          addcart
         </Link><br/><br/><br/>
         <FillButton
           type='submit'

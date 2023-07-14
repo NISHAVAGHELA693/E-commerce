@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import "../e-commerce/index.css";
 import { useNavigate } from "react-router-dom";
-import InputField  from "../components/inputField";
+import InputField from "../components/inputField";
 import FillButton from "../components/buttons/fillButton";
+import stringConst from "../common/constant/index";
 const Login = () => {
   const navigate = useNavigate();
   const [loginError, setLoginError] = useState(false);
@@ -22,13 +23,17 @@ const Login = () => {
   };
 
   const validate = (values) => {
+    console.log("bnnbmnhn", values);
+    console.log("rtyht");
     let errors = {};
     if (!values.username) {
+      console.log("rtyhtfhgjkkjkil");
       errors.username = "Cannot be blank";
-    }
-    if (!values.password) {
+    } else if (!values.password) {
       errors.password = "Cannot be blank";
+      console.log("nishaaaaaa");
     } else if (values.password.length < 4) {
+      console.log("rtyhtniashaa");
       errors.password = "Password must be more than 4 characters";
     }
     return errors;
@@ -36,6 +41,7 @@ const Login = () => {
 
   function onclickHandle(e) {
     e.preventDefault();
+    console.log(".....", validate(formValues));
     setFormErrors(validate(formValues));
     let item = {
       username: formValues.username,
@@ -74,35 +80,40 @@ const Login = () => {
     <div>
       <h2>Login</h2>
       <form onSubmit={() => onclickHandle()}>
-        <div >
-<InputField
-type={"text"}
-name={"username"}
-id={"username"}
-value={formValues.username}
-handleChange={handleChange}
-headeing={"username"}
-/>
-  
-  <br/>
-  <br/>
+        <div>
+          <InputField
+            type={"text"}
+            name={"username"}
+            id={"username"}
+            value={formValues.username}
+            handleChange={handleChange}
+            headeing={"username"}
+            formErrors={formErrors}
+          />
+            {formErrors.username&&<p className="error">{formErrors.username}</p>}
 
-  <InputField
+          <br />
+          <br />
 
-type="password"
-name={"password"}
-id={"password"}
-value={formValues.password}
-handleChange={handleChange}
-headeing={"pasword"}
-
-/>
+          <InputField
+            type="password"
+            name={"password"}
+            id={"password"}
+            value={formValues.password}
+            handleChange={handleChange}
+            headeing={"pasword"}
+            formErrors={formErrors}
+          />
+           {formErrors.password&&<p className="error">{formErrors.password}</p>}
+     
+       
           <br />
           <br />
           <FillButton
-          type='submit'
-          handleClick={onclickHandle}
-          name="LOGIN"/>
+            type="submit"
+            handleClick={(event) => onclickHandle(event)}
+            name={stringConst.login}
+          />
         </div>
       </form>
     </div>
