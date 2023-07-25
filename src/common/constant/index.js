@@ -1,5 +1,5 @@
 const stringConst={ 
-    login:"Sign In",
+    login:"LOGIN",
     
 }
 export default stringConst;

@@ -1,15 +1,6 @@
-import { Link, NavLink} from "react-router-dom";
-import { useNavigate } from "react-router-dom";
-import FillButton from "../buttons/fillButton";
-function Navbar({ children, username }) {
-  const nav = useNavigate();
-  const Logout = () => {
-    
-    const username = JSON.parse(localStorage.getItem("username"));
-    localStorage.removeItem("username");
-    nav("/")
-
-  }; 
+import { Link} from "react-router-dom";
+import '../header/navbar.css'
+function Navbar({children}) {
   return (
     <>
       <div className="navlink">
@@ -32,16 +23,10 @@ function Navbar({ children, username }) {
         </Link>
         <Link className="products" to="/addcart">
           addcart
-        </Link><br/><br/><br/>
-        <FillButton
-          type='submit'
-          name="LogOut"
-          customStyle ='logout'
-          handleClick={Logout}/>
-        <h5>
-          Welcome {username.username}
-        </h5>
-        
+        </Link>
+        <br />
+        <br />
+        <br />
       </div>
       {children}
     </>

@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 import InputField from "../components/inputField";
 import FillButton from "../components/buttons/fillButton";
 import stringConst from "../common/constant/index";
+import {toast } from "react-toastify";
+toast.configure();
 const Login = () => {
   const navigate = useNavigate();
   const [loginError, setLoginError] = useState(false);
@@ -12,36 +14,31 @@ const Login = () => {
   const [formValues, setFormValues] = useState(intialValues);
   const [formErrors, setFormErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
-
   const submitForm = () => {
     console.log(formValues);
   };
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormValues({ ...formValues, [name]: value });
   };
 
   const validate = (values) => {
-    console.log("bnnbmnhn", values);
-    console.log("rtyht");
     let errors = {};
     if (!values.username) {
-      console.log("rtyhtfhgjkkjkil");
       errors.username = "Cannot be blank";
     } else if (!values.password) {
       errors.password = "Cannot be blank";
-      console.log("nishaaaaaa");
     } else if (values.password.length < 4) {
-      console.log("rtyhtniashaa");
       errors.password = "Password must be more than 4 characters";
+    }
+    else if (!values.username){
+      errors.login = "user not found";
     }
     return errors;
   };
 
   function onclickHandle(e) {
     e.preventDefault();
-    console.log(".....", validate(formValues));
     setFormErrors(validate(formValues));
     let item = {
       username: formValues.username,
@@ -56,13 +53,13 @@ const Login = () => {
     })
       .then((response) => response.json())
       .then((response) => {
-        console.log("fhhh", response.id);
         if (response.id) {
           localStorage.setItem("username", JSON.stringify(item));
           alert("Login successful");
-          navigate("/smartphones");
+          navigate("/smartphones", { replace: true })
         } else {
           setLoginError(true);
+          toast("user not found")
         }
       })
 

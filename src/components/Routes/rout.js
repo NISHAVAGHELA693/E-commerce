@@ -1,5 +1,5 @@
 import Login from "../../e-commerce/login";
-import { Routes, Route, BrowserRouter, Router } from "react-router-dom";
+import { Routes, Route, BrowserRouter} from "react-router-dom";
 import Smartphones from "../../e-commerce/smartphones";
 import Others from "../../e-commerce/others";
 import Clothes from "../../e-commerce/clothes";
@@ -7,8 +7,7 @@ import Groceries from "../../e-commerce/furniture";
 import Furniture from "../../e-commerce/groceries";
 import AddCart from "../../e-commerce/addcart";
 import "react-toastify/dist/ReactToastify.css";
-import { ToastContainer, toast } from "react-toastify";
-import { Redirect } from "react";
+import { toast } from "react-toastify";
 import { Navigate, Outlet } from 'react-router-dom';
 toast.configure();
 function PrivateRoute(props) {
@@ -20,6 +19,7 @@ function RoutesComponent() {
     <div className="App">
       <BrowserRouter>
           <Routes>
+  
           <Route path="/" element={<Login />} />
           <Route exact path='/' element={<PrivateRoute/>}>
           <Route path="/smartphones" element={<Smartphones />}/>

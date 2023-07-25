@@ -24,7 +24,6 @@ const Login = () => {
     })
       .then((response) => response.json())
       .then((response) => {
-        console.log("fhhh", response.id);
         if (response.id) {
           localStorage.setItem("username", JSON.stringify(item));
 
@@ -41,7 +40,6 @@ const Login = () => {
         setLoginError(true);
       });
   }
-
   return (
     <div>
       <h2>Login</h2>

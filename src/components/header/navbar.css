@@ -1,0 +1,12 @@
+.navlink{
+    background-color: rgb(14, 214, 198);
+    height: 45px;
+    width: 900px;
+    margin-top: 3px;
+  }
+  .products{
+    margin-left: 30px;
+    font-size: larger;
+    margin-right: 40px;
+    color: white;
+  }

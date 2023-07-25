@@ -1,6 +1,6 @@
 import "../buttons/styles.css";
 const FillButton = (props) => {
-  const { type, handleClick, name, customStyle } = props;
+  const { type, handleClick, name, customStyle} = props;
   return (
     <div>
       <button

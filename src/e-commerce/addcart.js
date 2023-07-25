@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import CartItems from "../components/cartitems/cartItem";
 function AddCart() {
   const [selectedItem, setSelectedItem] = useState(null);
   const [cartItems, setCartItems] = useState([]);
@@ -9,35 +10,42 @@ function AddCart() {
     const storedCartItems = JSON.parse(localStorage.getItem("cartItems"));
     setCartItems(storedCartItems);
   }, []);
-
   useEffect(() => {
     let totalPrice = 0;
     let totalDiscount = 0;
     cartItems?.forEach((item) => {
-      totalPrice += item?.price;
-      totalDiscount += (item?.price * item?.discountPercentage) / 100;
+      const itemPrice = item?.price * item?.quantity;
+      totalPrice += itemPrice;
+      totalDiscount += (itemPrice * item?.discountPercentage) / 100;
     });
     setTotalPrice(totalPrice);
     setTotalDiscount(totalDiscount);
   }, [cartItems]);
 
-  const removeOnClick = (itemId) => {
-    const updatedCartItems = cartItems.filter((item) => item?.id !== itemId);
-    setCartItems(updatedCartItems);
-    localStorage.setItem("cartItems", JSON.stringify(updatedCartItems));
+  const removeOne = (itemId) => {
+    const updatedCartItems = cartItems.map((cartItem) => {
+      if (cartItem.id === itemId) {
+        const updatedQuantity = cartItem.quantity - 1;
+        if (updatedQuantity <= 0) {
+          return null;
+        } else {
+          return { ...cartItem, quantity: updatedQuantity };
+        }
+      }
+      return cartItem;
+    });
+    const filteredCartItems = updatedCartItems.filter((item) => item !== null);
+    setCartItems(filteredCartItems);
+    localStorage.setItem("cartItems", JSON.stringify(filteredCartItems));
   };
   const addOnClick = (itemId) => {
     const updatedCartItems = cartItems?.map((cartItem) => {
       if (cartItem?.id === itemId) {
-        console.log( 'quantity', cartItem?.quantity + 1);
-        console.log('cartItem',cartItem)
-        return { ...cartItem, quantity: cartItem?.quantity + 1};
+        return { ...cartItem, quantity: cartItem?.quantity + 1 };
       }
       return cartItem;
     });
-    console.log('hello',updatedCartItems);
     setCartItems(updatedCartItems);
-    console.log('hello',updatedCartItems);
     localStorage.setItem("cartItems", JSON.stringify(updatedCartItems));
   };
 
@@ -84,27 +92,25 @@ function AddCart() {
       <div className="nav-maindiv">
         {cartItems?.map((value) => {
           return (
-            <div className="marginView" key={value?.id}>
-              <p className="title">{value?.title}</p>
-              <img src={value?.thumbnail}></img>
-              <h5>price : ₹{value?.price}</h5>
-              <p>DiscountPercentage : {value?.discountPercentage}%</p>
-              {selectedItem === value?.id ? (
-                <p>{value?.description}</p>
-              ) : (
-                <p>Description : {value?.description.substring(0, 40)}...</p>
-              )}
+            <div>
+            <CartItems
+                  title={value.title}
+                  thumbnail={value.thumbnail}
+                  price={value.price}
+                  DiscountPercentage={value.discountPercentage}
+                  Description={value.description}
+                />
               <button
                 className="add-btn"
                 type="submit"
-                onClick={() => removeOnClick(value.id)}
+                onClick={() => removeOne(value?.id)}
               >
                 -
               </button>
               <button
                 className="add-btn"
                 type="submit"
-                onClick={() => addOnClick(value.id)}
+                onClick={() => addOnClick(value?.id)}
               >
                 +{value?.quantity}
               </button>

@@ -3,62 +3,18 @@
         width: 220px;
         height: 30px;
         background: #e0dada;
+        margin-left: 240px;
         
     }
     .email-label{
       text-align: right;
     }
-    .maindiv{
-        width: 400px;
-        height: 200px;
-        font-size: small;
-        margin-left: 280px;
-        text-align: left;
-    }
-    .login-btn {
-        background-color: #04AA6D;
-        color: white;
-        padding: 14px 20px;
-        margin: 8px 0;
-        border: none;
-        cursor: pointer;
-        width: 100%;
-      }
-      button:hover {
-        opacity: 0.8;
-      }
-      input[type=text], input[type=password] {
-        width: 100%;
-        padding: 12px 20px;
-        margin: 8px 0;
-        display: inline-block;
-        border: 1px solid #ccc;
-        box-sizing: border-box;
-        text-align: center;
-      }
-.products{
-  margin-left: 30px;
-  font-size: larger;
-  margin-right: 40px;
-  color: white;
-}
-.navlink{
-  background-color: rgb(53, 157, 142);
-  height: 45px;
-  width: 900px;
-}
 h2{
   text-align: center;
 }
 img{
   width: 200px;
   height: 200px;
-}
-.marginView{
-  margin: 11px;
-  background-color: rgb(53, 157, 142);
-  border-radius: 10px;
-  flex: 0.24;
 }
 p{
   font-size: small;
@@ -78,4 +34,10 @@ h5{
     margin-left: 55px;
     color: white;
     margin-bottom: 5px;
+}
+.add-btn{
+  margin-top: 62px;
+  margin-left: 12px;
+  width: 34px;
+  height: 20px;
 }
